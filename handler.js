@@ -5,7 +5,7 @@ const db = new AWS.DynamoDB.DocumentClient();
 const uuid = require('uuid/v4');
 const booksTable = process.env.BOOKS_TABLE;
 
-function response( statusCode, message ){
+function response( statusCode, message ) {
     return {
         statusCode: statusCode,
         headers: { 'Content-Type': 'application/json' },
@@ -28,7 +28,7 @@ module.exports.createBook = (event, context, callback) => {
     return db.put({
         TableName: booksTable,
         Item: book
-    }).promise().then(() => {
+    }).promise().then( () => {
         callback(null, response(201, book))
     }).catch( err => {
         response(err.statusCode, err)
