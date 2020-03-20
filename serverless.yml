@@ -23,6 +23,7 @@ provider:
       Resource:
         - "arn:aws:dynamodb:${self:provider.region}:*:table/${self:custom.settings.BOOKS_TABLE}"
 
+
 functions:
   createBook:
     handler: handler.createBook
